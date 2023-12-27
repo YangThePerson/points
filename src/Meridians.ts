@@ -16,6 +16,7 @@ const Meridians: {
     Xi_Cleft: string;
     Front_Mu: string;
     Back_Shu: string;
+    [key: string]: string;
   };
 } = {
   LU: {

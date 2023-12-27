@@ -7,6 +7,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Layout meridian="HT" />
+    <Layout meridian="SP" />
   </React.StrictMode>
 );
