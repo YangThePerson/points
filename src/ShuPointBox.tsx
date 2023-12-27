@@ -26,6 +26,7 @@ const ShuPointBox = ({
           if (!e.key.match(/[0-9]|(Backspace)/)) e.preventDefault();
         }}
         label={element}
+        id={`$${element}`}
         InputProps={{
           inputProps: {
             maxLength: 2,

@@ -28,6 +28,7 @@ const ShuPoints = ({ meridian }: { meridian: string }) => {
           elements.push(
             <ShuPointBox
               {...elementParams[i]}
+              key={i}
               value={Number(
                 Meridian[
                   ElementToShuPoint({
