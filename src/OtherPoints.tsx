@@ -30,7 +30,7 @@ const OtherPoints = ({ meridian }: { meridian: string }) => {
               </svg>
               <TextField
                 label={category.replace(/_/gim, ' ')}
-                id={`${category}`}
+                id={`$${category}`}
                 defaultValue={Meridian[category]}
                 InputProps={{
                   inputProps: {
