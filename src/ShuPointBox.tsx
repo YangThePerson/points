@@ -1,5 +1,5 @@
 import { Box, TextField } from '@mui/material';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import UserInputContext from './userInput';
 import ElementToShuPoint from './ElementToShuPoint';
 
@@ -14,7 +14,18 @@ const ShuPointBox = ({
   element: 'Wood' | 'Fire' | 'Earth' | 'Metal' | 'Water';
   category: 'Yin' | 'Yang';
 }) => {
-  const { setPoint } = useContext(UserInputContext)!;
+  const { setPoint, AnswerStates } = useContext(UserInputContext)!;
+
+  const [isAnswered, setIsAnswered] = useState(false);
+  useEffect(() => {
+    setIsAnswered(
+      !!(
+        AnswerStates[
+          ElementToShuPoint({ element: element, category: category })
+        ] < 2
+      )
+    );
+  }, [AnswerStates, setIsAnswered, category, element]);
 
   return (
     <Box
@@ -26,6 +37,14 @@ const ShuPointBox = ({
       }}
     >
       <TextField
+        {...(isAnswered && {
+          color: AnswerStates[
+            ElementToShuPoint({ element: element, category: category })
+          ]
+            ? 'success'
+            : 'error',
+          focused: true,
+        })}
         autoComplete="off"
         onKeyDown={(e) => {
           if (!e.key.match(/[0-9]|(Backspace)/)) e.preventDefault();
@@ -33,6 +52,7 @@ const ShuPointBox = ({
         label={element}
         id={`$${element}`}
         InputProps={{
+          readOnly: isAnswered,
           inputProps: {
             maxLength: 2,
             type: 'numeric',

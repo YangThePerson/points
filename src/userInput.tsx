@@ -49,6 +49,7 @@ const UserInputContext = createContext<
       AnswerStates: points<inputState>;
       setPoint: (key: string, value: string) => void;
       checkAnswers: () => void;
+      checkIfAllAnswered: () => boolean;
     }
   | undefined
 >(undefined);
@@ -57,7 +58,7 @@ export function UserInputProvider({
   children,
   meridian,
 }: {
-  children: JSX.Element[];
+  children: JSX.Element[] | JSX.Element;
   meridian: string;
 }) {
   const [InputValues, setInputValues] = useState(buildPointSet(''));
@@ -80,13 +81,24 @@ export function UserInputProvider({
           InputValues[point] === Meridians[meridian][point]
             ? inputState.CORRECT
             : inputState.INCORRECT;
+      console.log(states);
       return { ...states };
     });
   }, [InputValues, setAnswerStates, meridian]);
 
+  const checkIfAllAnswered = useCallback(() => {
+    return Object.values(InputValues).some((val) => !val || val.length < 3);
+  }, [InputValues]);
+
   return (
     <UserInputContext.Provider
-      value={{ InputValues, AnswerStates, setPoint, checkAnswers }}
+      value={{
+        InputValues,
+        AnswerStates,
+        setPoint,
+        checkAnswers,
+        checkIfAllAnswered,
+      }}
     >
       {children}
     </UserInputContext.Provider>
