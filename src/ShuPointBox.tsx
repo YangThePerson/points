@@ -1,16 +1,21 @@
 import { Box, TextField } from '@mui/material';
+import { useContext } from 'react';
+import UserInputContext from './userInput';
+import ElementToShuPoint from './ElementToShuPoint';
 
 const ShuPointBox = ({
   w,
   h,
   element,
-  value,
+  category,
 }: {
   w: string | number;
   h: string | number;
-  element: string;
-  value: number;
+  element: 'Wood' | 'Fire' | 'Earth' | 'Metal' | 'Water';
+  category: 'Yin' | 'Yang';
 }) => {
+  const { setPoint } = useContext(UserInputContext)!;
+
   return (
     <Box
       position={'absolute'}
@@ -21,7 +26,7 @@ const ShuPointBox = ({
       }}
     >
       <TextField
-        defaultValue={value}
+        autoComplete="off"
         onKeyDown={(e) => {
           if (!e.key.match(/[0-9]|(Backspace)/)) e.preventDefault();
         }}
@@ -32,6 +37,12 @@ const ShuPointBox = ({
             maxLength: 2,
             type: 'numeric',
             style: { textAlign: 'center' },
+            onInput: (e) => {
+              setPoint(
+                ElementToShuPoint({ element: element, category: category }),
+                e.currentTarget.value
+              );
+            },
           },
         }}
         sx={{

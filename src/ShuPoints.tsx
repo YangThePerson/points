@@ -2,7 +2,6 @@ import { Box } from '@mui/material';
 import ShuPointBox from './ShuPointBox';
 import Meridians from './Meridians';
 import { useState } from 'react';
-import ElementToShuPoint from './ElementToShuPoint';
 import HouseGraphic from './HouseGraphic';
 
 const elementParams: {
@@ -29,14 +28,7 @@ const ShuPoints = ({ meridian }: { meridian: string }) => {
             <ShuPointBox
               {...elementParams[i]}
               key={i}
-              value={Number(
-                Meridian[
-                  ElementToShuPoint({
-                    category: Meridian.category,
-                    element: elementParams[i].element,
-                  })
-                ].slice(2)
-              )}
+              category={Meridian.category}
             ></ShuPointBox>
           );
         return elements;

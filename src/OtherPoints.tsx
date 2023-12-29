@@ -1,10 +1,10 @@
 import { Box, Paper, TextField } from '@mui/material';
-import React, { useState } from 'react';
-import Meridians from './Meridians';
+import { useContext } from 'react';
 import svgPointSymbols from './svgPointSymbols';
+import UserInputContext from './userInput';
 
-const OtherPoints = ({ meridian }: { meridian: string }) => {
-  const [Meridian] = useState(Meridians[meridian]!);
+const OtherPoints = () => {
+  const { setPoint } = useContext(UserInputContext)!;
 
   return (
     <Box
@@ -29,11 +29,14 @@ const OtherPoints = ({ meridian }: { meridian: string }) => {
                 {svgPointSymbols[category]}
               </svg>
               <TextField
+                autoComplete="off"
                 label={category.replace(/_/gim, ' ')}
                 id={`$${category}`}
-                defaultValue={Meridian[category]}
                 InputProps={{
                   inputProps: {
+                    onInput: (e) => {
+                      setPoint(category, e.currentTarget.value);
+                    },
                     maxLength: 4,
                     style: { textAlign: 'center' },
                   },
