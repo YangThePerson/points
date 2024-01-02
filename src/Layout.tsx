@@ -3,6 +3,7 @@ import ShuPoints from './ShuPoints';
 import OtherPoints from './OtherPoints';
 import { UserInputProvider } from './userInput';
 import CheckAnswersButton from './CheckAnswersButton';
+import FeedbackDialog from './FeedbackDialog';
 
 function Layout({ meridian }: { meridian: string }) {
   return (
@@ -25,7 +26,15 @@ function Layout({ meridian }: { meridian: string }) {
           <ShuPoints meridian={meridian}></ShuPoints>
           <OtherPoints></OtherPoints>
         </Box>
-        <CheckAnswersButton />
+        <Box
+          p={'10px'}
+          display={'flex'}
+          flexDirection={'column'}
+          alignItems={'center'}
+        >
+          <CheckAnswersButton />
+          <FeedbackDialog meridian={meridian} />
+        </Box>
       </Box>
     </UserInputProvider>
   );

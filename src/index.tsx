@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Layout from './Layout';
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import createTheme from '@mui/material/styles/createTheme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Layout meridian="LU" />
+    <ThemeProvider theme={createTheme()}>
+      <Layout meridian="LU" />
+    </ThemeProvider>
   </React.StrictMode>
 );

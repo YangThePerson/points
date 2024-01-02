@@ -48,7 +48,7 @@ export default {
   ),
   Xi_Cleft: (
     <polyline
-      points="10,155 100,100 190,155"
+      points="10,130 100,75 190,130"
       fill="none"
       stroke="#000000"
       strokeWidth={1}

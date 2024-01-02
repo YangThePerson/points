@@ -3,7 +3,7 @@ import parseMeridianPoint from './parseMeridianPoint';
 import Meridians from './Meridians';
 
 type points<T> = {
-  Ying_Well: T;
+  Jing_Well: T;
   Ying_Spring: T;
   Shu_Stream: T;
   Jing_River: T;
@@ -27,7 +27,7 @@ export enum inputState {
 
 function buildPointSet<T>(defaultValue: T) {
   return {
-    Ying_Well: defaultValue,
+    Jing_Well: defaultValue,
     Ying_Spring: defaultValue,
     Shu_Stream: defaultValue,
     Jing_River: defaultValue,

@@ -12,7 +12,16 @@ const OtherPointBox = ({ category }: { category: string }) => {
   }, [AnswerStates, setIsAnswered, category]);
 
   return (
-    <Paper sx={{ p: '5px', m: '5px' }} key={category}>
+    <Paper
+      sx={{
+        p: '5px',
+        m: '5px',
+        display: 'flex',
+        alignItems: 'center',
+        height: 'fit-content',
+      }}
+      key={category}
+    >
       <svg
         viewBox="0 0 200 200"
         xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +50,6 @@ const OtherPointBox = ({ category }: { category: string }) => {
         }}
         sx={{
           m: '0px 5px',
-          maxWidth: '200px',
           '& input[type=number]': {
             '-moz-appearance': 'textfield',
           },

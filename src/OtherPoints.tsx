@@ -7,9 +7,11 @@ const OtherPoints = () => {
     <Box
       p={'20px'}
       position={'relative'}
-      height="660px"
+      height={{ xs: 'fit-content', lg: '660px' }}
+      maxWidth={'100vw'}
       display={'flex'}
-      flexDirection={'column'}
+      flexDirection={{ lg: 'column' }}
+      flexWrap={'wrap'}
       justifyContent={'center'}
     >
       {(() => {
