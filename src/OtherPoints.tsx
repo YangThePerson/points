@@ -17,7 +17,9 @@ const OtherPoints = () => {
       {(() => {
         const elements = [];
         for (const category in svgPointSymbols)
-          elements.push(<OtherPointBox category={category}></OtherPointBox>);
+          elements.push(
+            <OtherPointBox key={category} category={category}></OtherPointBox>
+          );
         return elements;
       })()}
     </Box>

@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from 'react';
+import { Fragment, useCallback, useContext, useState } from 'react';
 import UserInputContext from './userInput';
 import {
   Button,
@@ -21,6 +21,11 @@ import {
 import Draggable from 'react-draggable';
 import Meridians from './Meridians';
 import CloseIcon from '@mui/icons-material/Close';
+import {
+  ShuPointToElement,
+  PointNames,
+  validPointNames,
+} from './ShuPointToElement';
 
 function PaperComponent(props: PaperProps) {
   return (
@@ -88,26 +93,28 @@ const FeedbackDialog = ({ meridian }: { meridian: string }) => {
                 <CloseIcon />
               </IconButton>
             </DialogTitle>
-            <DialogContent dividers={true} sx={{ p: '0px' }}>
+            <DialogContent dividers={false} sx={{ p: '0px' }}>
               <TableContainer>
                 <Table size="small">
                   <TableBody>
                     {Object.keys(Meridians[meridian]).map((key, index) => (
-                      <>
+                      <Fragment key={key}>
                         {index >= 3 && (
-                          <TableRow
-                            sx={{
-                              '&:last-child td, &:last-child th': { border: 0 },
-                            }}
-                            key={key}
-                          >
+                          <TableRow>
                             <TableCell>
                               <Typography
                                 variant="body1"
                                 fontWeight={600}
                                 padding={'0px 20px 0px 60px'}
                               >
-                                {key.replace('_', ' ')}
+                                {key.replace('_', ' ') +
+                                  (PointNames.includes(key as validPointNames)
+                                    ? ' / ' +
+                                      ShuPointToElement({
+                                        category: Meridians[meridian].category,
+                                        pointName: key as validPointNames,
+                                      })
+                                    : '')}
                               </Typography>
                             </TableCell>
                             <TableCell>
@@ -120,7 +127,7 @@ const FeedbackDialog = ({ meridian }: { meridian: string }) => {
                             </TableCell>
                           </TableRow>
                         )}
-                      </>
+                      </Fragment>
                     ))}
                   </TableBody>
                 </Table>

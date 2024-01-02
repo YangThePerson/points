@@ -69,7 +69,6 @@ export function UserInputProvider({
   const setPoint = (key: string, value: string) => {
     setInputValues((val) => {
       val[key] = parseMeridianPoint(value, meridian);
-      console.log(`${key} = ${parseMeridianPoint(value, meridian)}`);
       return { ...val };
     });
   };
@@ -81,7 +80,6 @@ export function UserInputProvider({
           InputValues[point] === Meridians[meridian][point]
             ? inputState.CORRECT
             : inputState.INCORRECT;
-      console.log(states);
       return { ...states };
     });
   }, [InputValues, setAnswerStates, meridian]);

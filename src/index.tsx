@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={createTheme()}>
-      <Layout meridian="LU" />
+      <Layout meridian="LI" />
     </ThemeProvider>
   </React.StrictMode>
 );
