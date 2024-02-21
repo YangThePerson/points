@@ -43,6 +43,7 @@ const FeedbackDialog = ({ meridian }: { meridian: string }) => {
 
   const { AnswerStates } = useContext(UserInputContext)!;
   const hasCheckedAnswers = useCallback(() => {
+    if (!AnswerStates) return;
     return !Object.values(AnswerStates).includes(2);
   }, [AnswerStates]);
 
@@ -105,7 +106,10 @@ const FeedbackDialog = ({ meridian }: { meridian: string }) => {
                               <Typography
                                 variant="body1"
                                 fontWeight={600}
-                                padding={'0px 20px 0px 60px'}
+                                padding={{
+                                  xs: '0px 10px 0px 20px',
+                                  sm: '0px 20px 0px 60px',
+                                }}
                               >
                                 {key.replace('_', ' ') +
                                   (PointNames.includes(key as validPointNames)
@@ -120,7 +124,10 @@ const FeedbackDialog = ({ meridian }: { meridian: string }) => {
                             <TableCell>
                               <Typography
                                 variant="body1"
-                                padding={'0px 60px 0px 20px'}
+                                padding={{
+                                  xs: '0px 20px 0px 10px',
+                                  sm: '0px 60px 0px 20px',
+                                }}
                               >
                                 {Meridians[meridian][key]}
                               </Typography>

@@ -28,59 +28,66 @@ const ShuPointBox = ({
   }, [AnswerStates, setIsAnswered, category, element]);
 
   return (
-    <Box
-      position={'absolute'}
-      top={h}
-      left={w}
-      sx={{
-        transform: 'translate(-50%, -50%)',
-      }}
-    >
-      <TextField
-        {...(isAnswered && {
-          color: AnswerStates[
-            ElementToShuPoint({ element: element, category: category })
-          ]
-            ? 'success'
-            : 'error',
-          focused: true,
-        })}
-        autoComplete="off"
-        onKeyDown={(e) => {
-          if (!e.key.match(/[0-9]|(Backspace)/)) e.preventDefault();
-        }}
-        label={element}
-        id={`$${element}`}
-        InputProps={{
-          readOnly: isAnswered,
-          inputProps: {
-            maxLength: 2,
-            type: 'numeric',
-            style: { textAlign: 'center' },
-            onInput: (e) => {
-              setPoint(
-                ElementToShuPoint({ element: element, category: category }),
-                e.currentTarget.value
-              );
-            },
-          },
-        }}
+    <>
+      <Box
+        position={'absolute'}
+        top={h}
+        left={w}
+        minWidth={'100px'}
+        bgcolor={'white'}
         sx={{
-          maxWidth: '100px',
-          '& input[type=number]': {
-            '-moz-appearance': 'textfield',
-          },
-          '& input[type=number]::-webkit-outer-spin-button': {
-            '-webkit-appearance': 'none',
-            margin: 0,
-          },
-          '& input[type=number]::-webkit-inner-spin-button': {
-            '-webkit-appearance': 'none',
-            margin: 0,
-          },
+          transform: 'translate(-50%, -50%)',
         }}
-      />
-    </Box>
+      >
+        <TextField
+          {...(isAnswered && {
+            color: AnswerStates[
+              ElementToShuPoint({ element: element, category: category })
+            ]
+              ? 'success'
+              : 'error',
+            focused: true,
+          })}
+          autoComplete="off"
+          onKeyDown={(e) => {
+            if (!e.key.match(/[0-9]|(Backspace)/)) e.preventDefault();
+          }}
+          label={element}
+          id={`$${element}`}
+          InputLabelProps={{
+            style: { backgroundColor: 'white' },
+          }}
+          InputProps={{
+            readOnly: isAnswered,
+            inputProps: {
+              maxLength: 2,
+              inputMode: 'numeric',
+              style: { textAlign: 'center' },
+              onInput: (e) => {
+                setPoint(
+                  ElementToShuPoint({ element: element, category: category }),
+                  e.currentTarget.value
+                );
+              },
+            },
+          }}
+          sx={{
+            maxWidth: '100px',
+            '& input[type=number]': {
+              '-moz-appearance': 'textfield',
+            },
+            '& input[type=number]::-webkit-outer-spin-button': {
+              '-webkit-appearance': 'none',
+              margin: 0,
+            },
+            '& input[type=number]::-webkit-inner-spin-button': {
+              '-webkit-appearance': 'none',
+              margin: 0,
+            },
+          }}
+        />
+      </Box>
+    </>
   );
 };
 

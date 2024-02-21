@@ -41,6 +41,10 @@ const OtherPointBox = ({ category }: { category: string }) => {
         InputProps={{
           readOnly: isAnswered,
           inputProps: {
+            inputMode:
+              category !== 'Front_Mu' && category !== 'Back_Shu'
+                ? 'numeric'
+                : 'text',
             onInput: (e) => {
               setPoint(category, e.currentTarget.value);
             },

@@ -20,7 +20,13 @@ const ShuPoints = ({ meridian }: { meridian: string }) => {
   const [Meridian] = useState(Meridians[meridian]!);
 
   return (
-    <Box p={'20px'} position={'relative'}>
+    <Box
+      p={'20px'}
+      position={'relative'}
+      boxSizing={'border-box'}
+      maxWidth={'calc(min(100vw, 100svh) - 40px)'}
+      maxHeight={'calc(min(100vw, 100svh) - 40px)'}
+    >
       {(() => {
         const elements = [];
         for (let i = 0; i < elementParams.length; i++)
