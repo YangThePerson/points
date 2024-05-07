@@ -24,8 +24,16 @@ const ShuPoints = ({ meridian }: { meridian: string }) => {
       p={'20px'}
       position={'relative'}
       boxSizing={'border-box'}
-      maxWidth={'calc(min(100vw, 100svh) - 40px)'}
-      maxHeight={'calc(min(100vw, 100svh) - 40px)'}
+      sx={{
+        xs: {
+          maxWidth: 'calc(min(100vw, 100svh) - 40px)',
+          maxHeight: 'calc(min(100vw, 100svh) - 40px)',
+        },
+        lg: {
+          maxWidth: '500px',
+          maxHeight: '500px',
+        },
+      }}
     >
       {(() => {
         const elements = [];
