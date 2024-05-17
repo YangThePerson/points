@@ -5,7 +5,7 @@ import { UserInputProvider } from './userInput';
 import CheckAnswersButton from './CheckAnswersButton';
 import FeedbackDialog from './FeedbackDialog';
 
-function Layout({ meridian }: { meridian: string }) {
+function HouseAndPointsLayout({ meridian }: { meridian: string }) {
   return (
     <UserInputProvider meridian={meridian}>
       <Box
@@ -40,4 +40,4 @@ function Layout({ meridian }: { meridian: string }) {
   );
 }
 
-export default Layout;
+export default HouseAndPointsLayout;
