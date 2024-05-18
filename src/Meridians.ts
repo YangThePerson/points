@@ -85,7 +85,7 @@ const Meridians: {
     Horary: 'ST36',
     Tonification: 'ST41',
     Sedation: 'ST45',
-    Source: 'ST41',
+    Source: 'ST42',
     Luo_Connecting: 'ST40',
     Xi_Cleft: 'ST34',
     Front_Mu: 'REN12',
