@@ -214,7 +214,7 @@ const Meridians: {
     Source: 'LV3',
     Luo_Connecting: 'LV5',
     Xi_Cleft: 'LV6',
-    Front_Mu: 'LV14 ',
+    Front_Mu: 'LV14',
     Back_Shu: 'UB18',
   },
   GB: {
